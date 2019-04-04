@@ -1,24 +1,38 @@
 <template>
   <div id="app">
-    <div style="background-color:#545c64;">
-      <el-menu
-        :default-active="activeIndex2"
-        class="el-menu-demo"
-        mode="horizontal"
-        @select="handleSelect"
-        background-color="#545c64"
-        text-color="#fff"
-        active-text-color="#ffd04b"
-      >
-        <el-menu-item v-if="menuItemDisplay('mainpage')" index="mainpage">主页</el-menu-item>
-        <el-submenu v-if="menuItemDisplay('customermanagement')" index="customermanagement">
-          <template slot="title">客户管理</template>
-          <el-menu-item v-if="menuItemDisplay('customerinfo')" index="customerinfo">客户信息</el-menu-item>
-        </el-submenu>
-        <el-menu-item v-if="menuItemDisplay('config')" index="config">配置管理</el-menu-item>
-      </el-menu>
+    <div>
+      <el-container>
+        <el-header style="padding:0px;">
+          <el-menu
+            :default-active="activeIndex2"
+            class="el-menu-demo"
+            mode="horizontal"
+            @select="handleSelect"
+            background-color="#545c64"
+            text-color="#fff"
+            active-text-color="#ffd04b"
+          >
+            <el-menu-item v-if="menuItemDisplay('mainpage')" index="mainpage">首页</el-menu-item>
+            <el-submenu v-if="menuItemDisplay('customermanagement')" index="customermanagement">
+              <template slot="title">客户管理</template>
+              <el-menu-item v-if="menuItemDisplay('customerinfo')" index="customerinfo">客户信息</el-menu-item>
+            </el-submenu>
+            <el-menu-item v-if="menuItemDisplay('config')" index="config">配置管理</el-menu-item>
+          </el-menu>
+        </el-header>
+        <el-container>
+          <el-aside style="width:100px;padding-top:10px;">
+            <el-button type="primary" size="mini">新建客户</el-button>
+          </el-aside>
+          <el-container>
+            <el-main>
+              <router-view></router-view>
+            </el-main>
+            <el-footer></el-footer>
+          </el-container>
+        </el-container>
+      </el-container>
     </div>
-    <router-view></router-view>
   </div>
 </template>
 
@@ -29,7 +43,7 @@ export default {
     return {
       menus: [{
         'index': 'mainpage',
-        'name': '主页',
+        'name': '首页',
         'path': '/'
       }, {
         'index': 'customermanagement',
