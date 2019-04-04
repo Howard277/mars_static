@@ -2,7 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 // import HelloWorld from '@/components/HelloWorld'
 import main from '@/components/main/main.vue'
-import customer from '@/components/customer/customer.vue'
+import customerinfo from '@/components/customer/customer.vue'
+import config from '@/components/config/config.vue'
 
 Vue.use(Router)
 
@@ -13,8 +14,12 @@ export default new Router({
     name: 'main',
     component: main
   }, {
-    path: '/customer',
-    name: 'customer',
-    component: customer
+    path: '/customerinfo',
+    name: 'customerinfo',
+    component: customerinfo
+  }, {
+    path: '/config',
+    name: 'config',
+    component: config
   }]
 })

@@ -1,17 +1,23 @@
 <template>
   <div id="app">
-    <el-menu
-      :default-active="activeIndex2"
-      class="el-menu-demo"
-      mode="horizontal"
-      @select="handleSelect"
-      background-color="#545c64"
-      text-color="#fff"
-      active-text-color="#ffd04b"
-    >
-      <!--菜单的组成是通过data中的menus数组构成的-->
-      <el-menu-item v-for="item in menus" :key="item.index" :index="item.index">{{item.name}}</el-menu-item>
-    </el-menu>
+    <div style="background-color:#545c64;">
+      <el-menu
+        :default-active="activeIndex2"
+        class="el-menu-demo"
+        mode="horizontal"
+        @select="handleSelect"
+        background-color="#545c64"
+        text-color="#fff"
+        active-text-color="#ffd04b"
+      >
+        <el-menu-item v-if="menuItemDisplay('mainpage')" index="mainpage">主页</el-menu-item>
+        <el-submenu v-if="menuItemDisplay('customermanagement')" index="customermanagement">
+          <template slot="title">客户管理</template>
+          <el-menu-item v-if="menuItemDisplay('customerinfo')" index="customerinfo">客户信息</el-menu-item>
+        </el-submenu>
+      </el-menu>
+      <el-menu-item v-if="menuItemDisplay('config')" index="config">配置管理</el-menu-item>
+    </div>
     <router-view></router-view>
   </div>
 </template>
@@ -19,16 +25,19 @@
 <script>
 export default {
   name: 'App',
-  data() {
+  data () {
     return {
       menus: [{
         'index': 'mainpage',
         'name': '主页',
         'path': '/'
       }, {
-        'index': 'usercenter',
-        'name': '用户中心',
-        'path': '/customer'
+        'index': 'customermanagement',
+        'name': '客户管理'
+      }, {
+        'index': 'customerinfo',
+        'name': '客户信息',
+        'path': '/customerinfo'
       }],
       activeIndex: 'mainpage',
       activeIndex2: 'mainpage'
@@ -37,11 +46,22 @@ export default {
   methods: {
     // 菜单变更处理函数，遍历data中的menus数据，判断当前选中菜单的index数据然后调整的指定路径
     handleSelect: function (key, keyPath) {
-      for(let idx in this.$data['menus']){
-        if(this.$data['menus'][idx]['index'] === key){
-          this.$router.push(this.$data['menus'][idx]['path'])
+      for (let idx in this.$data['menus']) {
+        if (this.$data['menus'][idx]['index'] === key) {
+          if ('path' in this.$data['menus'][idx]) {
+            this.$router.push(this.$data['menus'][idx]['path'])
+          }
         }
       }
+    },
+    // 菜单项显示控制函数：根据传入的key，判断是否在数组中，如果在就显示，如果不在就不显示
+    menuItemDisplay: function (key) {
+      for (let idx in this.$data['menus']) {
+        if (this.$data['menus'][idx]['index'] === key) {
+          return true
+        }
+      }
+      return false
     }
   }
 }
