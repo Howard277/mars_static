@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <p>配置管理</p>
-    </div>
+  <div>
+    <p>配置管理</p>
+  </div>
 </template>
-<script src="config.js"></script>
+<script src="./config.js"></script>
