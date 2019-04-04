@@ -1,6 +1,14 @@
 <template>
   <div id="app">
-    <div>
+    <div v-if="needLogin">
+      <el-form ref="form" :model="loginUser" label-width="80px">
+        <el-form-item label="用户名">
+          <el-input v-model="loginUser.name"></el-input>
+        </el-form-item>
+        <el-button type="primary" size="mini" @click="login">登录</el-button>
+      </el-form>
+    </div>
+    <div v-else>
       <el-container>
         <el-header style="padding:0px;">
           <el-menu
@@ -36,56 +44,7 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'App',
-  data () {
-    return {
-      menus: [{
-        'index': 'mainpage',
-        'name': '首页',
-        'path': '/'
-      }, {
-        'index': 'customermanagement',
-        'name': '客户管理'
-      }, {
-        'index': 'customerlist',
-        'name': '客户列表',
-        'path': '/customerlist'
-      }, {
-        'index': 'config',
-        'name': '配置管理',
-        'path': '/config'
-      }],
-      activeIndex: 'mainpage',
-      activeIndex2: 'mainpage'
-    }
-  },
-  methods: {
-    // 菜单变更处理函数，遍历data中的menus数据，判断当前选中菜单的index数据然后调整的指定路径
-    handleSelect: function (key, keyPath) {
-      for (let idx in this.$data['menus']) {
-        if (this.$data['menus'][idx]['index'] === key) {
-          if ('path' in this.$data['menus'][idx]) {
-            this.$router.push(this.$data['menus'][idx]['path'])
-          }
-        }
-      }
-    },
-    // 菜单项显示控制函数：根据传入的key，判断是否在数组中，如果在就显示，如果不在就不显示
-    menuItemDisplay: function (key) {
-      for (let idx in this.$data['menus']) {
-        if (this.$data['menus'][idx]['index'] === key) {
-          return true
-        }
-      }
-      return false
-    },
-    jump: function (path) {
-      this.$router.push(path)
-    }
-  }
-}
+<script src="./App.js">
 </script>
 
 <style>
