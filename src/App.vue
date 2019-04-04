@@ -15,8 +15,8 @@
           <template slot="title">客户管理</template>
           <el-menu-item v-if="menuItemDisplay('customerinfo')" index="customerinfo">客户信息</el-menu-item>
         </el-submenu>
+        <el-menu-item v-if="menuItemDisplay('config')" index="config">配置管理</el-menu-item>
       </el-menu>
-      <el-menu-item v-if="menuItemDisplay('config')" index="config">配置管理</el-menu-item>
     </div>
     <router-view></router-view>
   </div>
@@ -38,6 +38,10 @@ export default {
         'index': 'customerinfo',
         'name': '客户信息',
         'path': '/customerinfo'
+      }, {
+        'index': 'config',
+        'name': '配置管理',
+        'path': '/config'
       }],
       activeIndex: 'mainpage',
       activeIndex2: 'mainpage'
