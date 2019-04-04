@@ -29,5 +29,11 @@ export default {
       }],
       showLikeCard: true
     }
+  },
+  methods: {
+    // 路由跳转方法
+    jump (path) {
+      this.$router.push(path)
+    }
   }
 }

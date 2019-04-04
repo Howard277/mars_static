@@ -15,14 +15,14 @@
             <el-menu-item v-if="menuItemDisplay('mainpage')" index="mainpage">首页</el-menu-item>
             <el-submenu v-if="menuItemDisplay('customermanagement')" index="customermanagement">
               <template slot="title">客户管理</template>
-              <el-menu-item v-if="menuItemDisplay('customerinfo')" index="customerinfo">客户信息</el-menu-item>
+              <el-menu-item v-if="menuItemDisplay('customerlist')" index="customerlist">客户列表</el-menu-item>
             </el-submenu>
             <el-menu-item v-if="menuItemDisplay('config')" index="config">配置管理</el-menu-item>
           </el-menu>
         </el-header>
         <el-container>
           <el-aside style="width:100px;padding-top:10px;">
-            <el-button type="primary" size="mini">新建客户</el-button>
+            <el-button type="primary" size="mini" @click="jump('/customerinfo')">新建客户</el-button>
           </el-aside>
           <el-container>
             <el-main>
@@ -49,9 +49,9 @@ export default {
         'index': 'customermanagement',
         'name': '客户管理'
       }, {
-        'index': 'customerinfo',
-        'name': '客户信息',
-        'path': '/customerinfo'
+        'index': 'customerlist',
+        'name': '客户列表',
+        'path': '/customerlist'
       }, {
         'index': 'config',
         'name': '配置管理',
@@ -80,6 +80,9 @@ export default {
         }
       }
       return false
+    },
+    jump: function (path) {
+      this.$router.push(path)
     }
   }
 }

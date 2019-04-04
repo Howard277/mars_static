@@ -2,10 +2,11 @@
   <div>
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>客户信息</el-breadcrumb-item>
+      <el-breadcrumb-item>客户列表</el-breadcrumb-item>
     </el-breadcrumb>
     <el-row style="text-align:left;padding:10px 0px 10px 0px;">
       <el-button type="primary" size="mini" @click="showLikeCard=!showLikeCard">切换显示</el-button>
+      <el-button type="primary" size="mini" @click="jump('/customerinfo')">新建客户</el-button>
     </el-row>
     <div>
       <div v-if="showLikeCard">
@@ -34,5 +35,5 @@
     </div>
   </div>
 </template>
-<script src="./customer.js">
+<script src="./customerlist.js">
 </script>
