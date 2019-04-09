@@ -5,7 +5,6 @@ export default {
   methods: {
     logout () {
       window.localStorage['menus'] = undefined
-      // window.open(this.$route)
       window.location.reload()
     }
   }
