@@ -3,9 +3,5 @@ export default {
     return {}
   },
   methods: {
-    logout () {
-      window.localStorage['menus'] = undefined
-      window.location.reload()
-    }
   }
 }

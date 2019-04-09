@@ -55,13 +55,22 @@ export default {
       }])
       // 菜单保存后，刷新页面
       window.location.reload()
+    },
+    // 取消登录
+    logincancel () {
+      this.data.loginUser.name = ''
+      this.data.loginUser.password = ''
+    },
+    // 退出登录
+    logout () {
+      window.localStorage['menus'] = undefined
+      window.location.reload()
     }
   },
   // vue实例创建时调用的函数
   created () {
     // 检查本地存储中是否存在菜单信息
     let storageMenus = window.localStorage['menus']
-    debugger
     if (typeof (storageMenus) !== 'undefined') {
       // 解析本地存储中的菜单信息，判断要访问的路径是否包含在菜单中
       let menus = JSON.parse(storageMenus)
