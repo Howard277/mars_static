@@ -5,7 +5,7 @@
         ref="form"
         :model="loginUser"
         label-width="55px"
-        style="width:420px;height:180px;padding:10px;position:absolute;left:50%;top:50%;position:absolute;left:50%;top:50%;margin-left:-210px;margin-top:-120px;border:2px solid #609EFF;border-radius:5px;"
+        style="width:420px;height:180px;padding-top:30px;padding-left:10px;padding-right:10px;position:absolute;left:50%;top:50%;position:absolute;left:50%;top:50%;margin-left:-210px;margin-top:-120px;border:2px solid #609EFF;border-radius:5px;"
       >
         <el-form-item label="用户名">
           <el-input v-model="loginUser.name"></el-input>
