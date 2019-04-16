@@ -41,7 +41,14 @@
                   <template slot="title">客户管理</template>
                   <el-menu-item v-if="menuItemDisplay('customerlist')" index="customerlist">客户列表</el-menu-item>
                 </el-submenu>
-                <el-menu-item v-if="menuItemDisplay('config')" index="config">配置管理</el-menu-item>
+                <el-submenu v-if="menuItemDisplay('authManagement')" index="authManagement">
+                  <template slot="title">权限管理</template>
+                  <el-menu-item
+                    v-if="menuItemDisplay('businessSystemList')"
+                    index="businessSystemList"
+                  >业务系统配置</el-menu-item>
+                  <el-menu-item v-if="menuItemDisplay('config')" index="config">配置管理</el-menu-item>
+                </el-submenu>
               </el-menu>
             </div>
             <div style="display:inline-block;float:right;margin-top:20px;">

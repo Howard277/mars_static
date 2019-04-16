@@ -76,7 +76,7 @@ export default {
     },
     // 退出登录
     logout () {
-      window.localStorage.removeItem('menus')
+      window.localStorage.removeItem('loginInfo')
       window.location.reload()
     }
   },
@@ -96,11 +96,6 @@ export default {
             this.needLogin = false
             this.menus = menus
             break
-          } else {
-            this.$message({
-              message: '访问当前路径无权限！',
-              type: 'warning'
-            })
           }
         }
       }
