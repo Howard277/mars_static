@@ -9,7 +9,8 @@ export default {
       loginUser: {
         name: '',
         password: ''
-      }
+      },
+      userInfo: undefined // 用户信息
     }
   },
   methods: {
@@ -37,6 +38,14 @@ export default {
     },
     // 登录函数，获取用户菜单保存到localStorage中
     login () {
+      if (this.loginUser.name.length === 0) {
+        this.$message({message: '请输入用户名！', type: 'warning'})
+        return
+      }
+      if (this.loginUser.password.length === 0) {
+        this.$message({message: '请输入密码！', type: 'warning'})
+        return
+      }
       window.localStorage['menus'] = JSON.stringify([{
         'index': 'mainpage',
         'name': '首页',
@@ -69,16 +78,19 @@ export default {
   },
   // vue实例创建时调用的函数
   created () {
-    // 检查本地存储中是否存在菜单信息
-    let storageMenus = window.localStorage['menus']
-    if (typeof (storageMenus) !== 'undefined') {
-      // 解析本地存储中的菜单信息，判断要访问的路径是否包含在菜单中
-      let menus = JSON.parse(storageMenus)
-      for (let index in menus) {
-        if (('path' in menus[index]) && (menus[index]['path'] === window.location.pathname)) {
-          this.needLogin = false
-          this.menus = menus
-          break
+    let pathname = window.location.pathname
+    if (!(pathname.endsWith('.jpg') || pathname.endsWith('.png') || pathname.endsWith('.css'))) {
+      // 检查本地存储中是否存在菜单信息
+      let storageMenus = window.localStorage['menus']
+      if (typeof (storageMenus) !== 'undefined') {
+        // 解析本地存储中的菜单信息，判断要访问的路径是否包含在菜单中
+        let menus = JSON.parse(storageMenus)
+        for (let index in menus) {
+          if (('path' in menus[index]) && (menus[index]['path'] === window.location.pathname)) {
+            this.needLogin = false
+            this.menus = menus
+            break
+          }
         }
       }
     }

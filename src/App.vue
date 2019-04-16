@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" style="height: 100%;">
     <div v-if="needLogin" style="background:url(/src/assets/background.jpg) no-repeat;">
       <el-form
         ref="form"
@@ -19,11 +19,13 @@
         </el-form-item>
       </el-form>
     </div>
-    <div v-else>
-      <el-container>
+    <div v-else style="height: 100%;">
+      <el-container style="height: 100%;">
         <el-header style="padding:0px;">
           <div style="text-align:left;background-color:#545c64;height:60px;">
-            <img src="./assets/logo.png" style="width:60px;height:60px;display:inline-block;">
+            <div style="display:inline-block;width:100px;text-align:center;">
+              <img src="./assets/logo.png" style="width:60px;height:60px;display:inline-block;">
+            </div>
             <div style="display:inline-block;">
               <el-menu
                 :default-active="activeIndex2"
@@ -53,7 +55,7 @@
           </div>
         </el-header>
         <el-container>
-          <el-aside style="width:100px;padding-top:10px;">
+          <el-aside style="width:100px;padding-top:10px;background-color:#ddeddd;">
             <el-button type="primary" size="mini" @click="jump('/customerinfo')">新建客户</el-button>
           </el-aside>
           <el-container>
