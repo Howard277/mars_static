@@ -8,7 +8,7 @@
         style="width:420px;height:180px;padding-top:30px;padding-left:10px;padding-right:10px;position:absolute;left:50%;top:50%;position:absolute;left:50%;top:50%;margin-left:-210px;margin-top:-120px;border:2px solid #609EFF;border-radius:5px;"
       >
         <el-form-item label="用户名">
-          <el-input v-model="loginUser.name"></el-input>
+          <el-input v-model="loginUser.loginName"></el-input>
         </el-form-item>
         <el-form-item label="密码">
           <el-input v-model="loginUser.password"></el-input>
@@ -45,7 +45,7 @@
               </el-menu>
             </div>
             <div style="display:inline-block;float:right;margin-top:20px;">
-              <span style="color:#FDF2D2;">欢迎，xxx</span>&nbsp;&nbsp;&nbsp;&nbsp;
+              <span style="color:#FDF2D2;">欢迎，{{userInfo.real_name}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
               <img
                 src="./assets/logout.png"
                 style="width:20px;height:30px;"

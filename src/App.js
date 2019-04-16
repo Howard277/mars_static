@@ -1,3 +1,5 @@
+import basic from './api/basic.js'
+
 export default {
   name: 'App',
   data () {
@@ -7,7 +9,7 @@ export default {
       activeIndex2: 'mainpage',
       needLogin: true,
       loginUser: {
-        name: '',
+        loginName: '',
         password: ''
       },
       userInfo: undefined // 用户信息
@@ -37,33 +39,35 @@ export default {
       this.$router.push(path)
     },
     // 登录函数，获取用户菜单保存到localStorage中
-    login () {
-      if (this.loginUser.name.length === 0) {
-        this.$message({message: '请输入用户名！', type: 'warning'})
+    async login () {
+      if (this.loginUser.loginName.length === 0) {
+        this.$message({
+          message: '请输入用户名！',
+          type: 'warning'
+        })
         return
       }
       if (this.loginUser.password.length === 0) {
-        this.$message({message: '请输入密码！', type: 'warning'})
+        this.$message({
+          message: '请输入密码！',
+          type: 'warning'
+        })
         return
       }
-      window.localStorage['menus'] = JSON.stringify([{
-        'index': 'mainpage',
-        'name': '首页',
-        'path': '/'
-      }, {
-        'index': 'customermanagement',
-        'name': '客户管理'
-      }, {
-        'index': 'customerlist',
-        'name': '客户列表',
-        'path': '/customerlist'
-      }, {
-        'index': 'config',
-        'name': '配置管理',
-        'path': '/config'
-      }])
-      // 菜单保存后，刷新页面
-      window.location.reload()
+      // 调用后台登录接口
+      let resData = await basic.login(this.loginUser)
+      debugger
+      if (resData['status']) {
+        // 保存信息
+        window.localStorage['loginInfo'] = JSON.stringify(resData)
+        // 菜单保存后，刷新页面
+        window.location.reload()
+      } else {
+        this.$message({
+          message: '登录失败！',
+          type: 'warning'
+        })
+      }
     },
     // 取消登录
     logincancel () {
@@ -72,7 +76,7 @@ export default {
     },
     // 退出登录
     logout () {
-      window.localStorage['menus'] = undefined
+      window.localStorage.removeItem('menus')
       window.location.reload()
     }
   },
@@ -80,16 +84,23 @@ export default {
   created () {
     let pathname = window.location.pathname
     if (!(pathname.endsWith('.jpg') || pathname.endsWith('.png') || pathname.endsWith('.css'))) {
-      // 检查本地存储中是否存在菜单信息
-      let storageMenus = window.localStorage['menus']
-      if (typeof (storageMenus) !== 'undefined') {
-        // 解析本地存储中的菜单信息，判断要访问的路径是否包含在菜单中
-        let menus = JSON.parse(storageMenus)
+      // 检查本地存储中是否存在登录信息
+      let loginInfo = window.localStorage['loginInfo']
+      if (typeof (loginInfo) !== 'undefined') {
+        // 解析本地存储中的登录信息，判断要访问的路径是否包含在其中
+        let loginInfoJS = JSON.parse(loginInfo)
+        this.userInfo = loginInfoJS['userInfo']
+        let menus = loginInfoJS['menus']
         for (let index in menus) {
           if (('path' in menus[index]) && (menus[index]['path'] === window.location.pathname)) {
             this.needLogin = false
             this.menus = menus
             break
+          } else {
+            this.$message({
+              message: '访问当前路径无权限！',
+              type: 'warning'
+            })
           }
         }
       }
