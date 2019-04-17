@@ -35,6 +35,9 @@
           <el-table
             :data="businessSystems"
             border
+            stripe
+            highlight-current-row
+            @current-change="handleCurrentChange"
             style="width: 100%"
             :row-class-name="tableRowClassName"
           >
