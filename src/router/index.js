@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import main from '@/components/main/main.vue'
-import customerlist from '@/components/customer/customerlist/customerlist.vue'
-import customerinfo from '@/components/customer/customerinfo/customerinfo.vue'
+import customerList from '@/components/customer/customerlist/customerlist.vue'
+import customerInfo from '@/components/customer/customerinfo/customerinfo.vue'
 import config from '@/components/config/config.vue'
 import businessSystemList from '@/components/businessSystem/businessSystemList/businessSystemList.vue'
 import businessSystemInfo from '@/components/businessSystem/businessSystemInfo/businessSystemInfo.vue'
+import candidateInfo from '@/components/candidate/candidateInfo/candidateInfo.vue'
+import candidateList from '@/components/candidate/candidateList/candidateList.vue'
 
 Vue.use(Router)
 
@@ -16,13 +18,13 @@ export default new Router({
     name: 'main',
     component: main
   }, {
-    path: '/customerlist',
-    name: 'customerlist',
-    component: customerlist
+    path: '/customerList',
+    name: 'customerList',
+    component: customerList
   }, {
-    path: '/customerinfo',
-    name: 'customerinfo',
-    component: customerinfo
+    path: '/customerInfo',
+    name: 'customerInfo',
+    component: customerInfo
   }, {
     path: '/config',
     name: 'config',
@@ -35,5 +37,13 @@ export default new Router({
     path: '/businessSystemInfo',
     name: 'businessSystemInfo',
     component: businessSystemInfo
+  }, {
+    path: '/candidateInfo',
+    name: 'candidateInfo',
+    component: candidateInfo
+  }, {
+    path: '/candidateList',
+    name: 'candidateList',
+    component: candidateList
   }]
 })

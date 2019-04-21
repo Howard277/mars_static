@@ -42,6 +42,10 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       changeOrigin: true,
       context: ["/general/**"],
       target: "http://localhost:8000"
+    },{
+      changeOrigin: true,
+      context: ["/es/**"],
+      target: "http://localhost:9200"
     }],
     quiet: true, // necessary for FriendlyErrorsPlugin
     watchOptions: {

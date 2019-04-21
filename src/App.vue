@@ -39,7 +39,7 @@
                 <el-menu-item v-if="menuItemDisplay('mainpage')" index="mainpage">首页</el-menu-item>
                 <el-submenu v-if="menuItemDisplay('customermanagement')" index="customermanagement">
                   <template slot="title">客户管理</template>
-                  <el-menu-item v-if="menuItemDisplay('customerlist')" index="customerlist">客户列表</el-menu-item>
+                  <el-menu-item v-if="menuItemDisplay('customerList')" index="customerList">客户列表</el-menu-item>
                 </el-submenu>
                 <el-submenu v-if="menuItemDisplay('authManagement')" index="authManagement">
                   <template slot="title">权限管理</template>
@@ -48,6 +48,13 @@
                     index="businessSystemList"
                   >业务系统配置</el-menu-item>
                   <el-menu-item v-if="menuItemDisplay('config')" index="config">配置管理</el-menu-item>
+                </el-submenu>
+                <el-submenu
+                  v-if="menuItemDisplay('candidateManagement')"
+                  index="candidateManagement"
+                >
+                  <template slot="title">候选人管理</template>
+                  <el-menu-item v-if="menuItemDisplay('candidateList')" index="candidateList">候选人列表</el-menu-item>
                 </el-submenu>
               </el-menu>
             </div>
@@ -62,8 +69,9 @@
           </div>
         </el-header>
         <el-container>
-          <el-aside style="width:100px;padding-top:10px;background-color:#ddeddd;">
-            <el-button type="primary" size="mini" @click="jump('/customerinfo')">新建客户</el-button>
+          <el-aside style="width:130px;padding-top:10px;background-color:#ddeddd;">
+            <el-button type="primary" size="mini" @click="jump('/customerInfo')" style="width:100px;margin-bottom:5px;margin-left:0px;">新建客户</el-button>
+            <el-button type="primary" size="mini" @click="jump('/candidateInfo')" style="width:100px;margin-bottom:5px;margin-left:0px;">新建候选人</el-button>
           </el-aside>
           <el-container>
             <el-main>

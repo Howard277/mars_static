@@ -6,7 +6,7 @@
     </el-breadcrumb>
     <el-row style="text-align:left;padding:10px 0px 10px 0px;">
       <el-button type="primary" size="mini" @click="showLikeCard=!showLikeCard">切换显示</el-button>
-      <el-button type="primary" size="mini" @click="jump('/customerinfo')">新建客户</el-button>
+      <el-button type="primary" size="mini" @click="jump('/customerInfo')">新建客户</el-button>
     </el-row>
     <div>
       <div v-if="showLikeCard">
