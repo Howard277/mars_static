@@ -1,3 +1,5 @@
+import vue from 'vue'
+
 export default {
   data () {
     return {
@@ -24,7 +26,7 @@ export default {
       let loginInfo = JSON.parse(window.localStorage['loginInfo'])
       let userInfo = loginInfo['userInfo']
       let realName = userInfo['real_name']
-      this.form.headhunter_description[this.form.headhunter_description.length] = realName + '：' + this.new_description
+      vue.set(this.form.headhunter_description, this.form.headhunter_description.length, realName + '：' + this.new_description)
     }
   },
   created () {}

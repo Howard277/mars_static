@@ -42,6 +42,7 @@ export default {
         for (let index in this.form.options) {
           if (this.form.options[index]['no'] === no) {
             this.form.options.splice(index, 1)
+            break
           }
         }
         this.$message({
