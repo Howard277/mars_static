@@ -7,8 +7,12 @@
     </el-breadcrumb>
     <div style="padding:10px;">
       <el-form ref="form" :label-position="left" :model="form" label-width="80px">
-        <el-form-item label="考题编号">
-          <el-input v-model="form.id" disabled="false"></el-input>
+        <el-row style="text-align:left;">
+          <el-button type="success" size="small" @click="save">保存</el-button>
+        </el-row>
+        <hr/>
+        <el-form-item style="text-align:left;" label="考题编号">
+          <b style="font-size:25px;">{{form.id}}</b>
         </el-form-item>
         <el-form-item label="考题标题">
           <el-input v-model="form.title"></el-input>

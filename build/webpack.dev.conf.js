@@ -40,7 +40,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     publicPath: config.dev.assetsPublicPath,
     proxy: [{
       changeOrigin: true,
-      context: ["/general/**"],
+      context: ["/general/**","/exam/**"],
       target: "http://localhost:8000"
     },{
       changeOrigin: true,

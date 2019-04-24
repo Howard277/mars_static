@@ -1,4 +1,5 @@
 import vue from 'vue'
+import exam from '@/api/exam.js'
 
 export default {
   data () {
@@ -51,6 +52,11 @@ export default {
         })
       }).catch(() => {
       })
+    },
+    // 保存
+    async save () {
+      let question = await exam.saveQuestion(this.form)
+      this.form.id = question.id
     }
   }
 }
