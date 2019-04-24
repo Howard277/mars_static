@@ -72,6 +72,7 @@
           <el-aside style="width:130px;padding-top:10px;background-color:#ddeddd;">
             <el-button type="primary" size="mini" @click="jump('/customerInfo')" style="width:100px;margin-bottom:5px;margin-left:0px;">新建客户</el-button>
             <el-button type="primary" size="mini" @click="jump('/candidateInfo')" style="width:100px;margin-bottom:5px;margin-left:0px;">新建候选人</el-button>
+            <el-button type="primary" size="mini" @click="jump('/questionInfo')" style="width:100px;margin-bottom:5px;margin-left:0px;">新建考题</el-button>
           </el-aside>
           <el-container>
             <el-main>

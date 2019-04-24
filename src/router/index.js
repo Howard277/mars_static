@@ -8,6 +8,7 @@ import businessSystemList from '@/components/businessSystem/businessSystemList/b
 import businessSystemInfo from '@/components/businessSystem/businessSystemInfo/businessSystemInfo.vue'
 import candidateInfo from '@/components/candidate/candidateInfo/candidateInfo.vue'
 import candidateList from '@/components/candidate/candidateList/candidateList.vue'
+import questionInfo from '@/components/exam/questionInfo/questionInfo.vue'
 
 Vue.use(Router)
 
@@ -45,5 +46,9 @@ export default new Router({
     path: '/candidateList',
     name: 'candidateList',
     component: candidateList
+  }, {
+    path: '/questionInfo',
+    name: 'questionInfo',
+    component: questionInfo
   }]
 })
