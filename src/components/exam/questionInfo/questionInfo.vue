@@ -2,7 +2,7 @@
   <div>
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item :to="{ path: '/candidateList'}">考题列表</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/questionList'}">考题列表</el-breadcrumb-item>
       <el-breadcrumb-item>考题详情</el-breadcrumb-item>
     </el-breadcrumb>
     <div style="padding:10px;">
@@ -10,7 +10,7 @@
         <el-row style="text-align:left;">
           <el-button type="success" size="small" @click="save">保存</el-button>
         </el-row>
-        <hr/>
+        <hr>
         <el-form-item style="text-align:left;" label="考题编号">
           <b style="font-size:25px;">{{form.id}}</b>
         </el-form-item>
@@ -24,13 +24,13 @@
         </el-form-item>
         <el-form-item label="考题类型" style="text-align:left;">
           <el-radio-group v-model="form.type">
-            <el-radio v-for="item in question_type" :key="item" :label="item">{{item}}</el-radio>
+            <el-radio v-for="(value, key) in question_type" :key="key" :label="key">{{value}}</el-radio>
           </el-radio-group>
         </el-form-item>
-        <el-form-item label="考题内容">
+        <el-form-item label="考题内容" v-if="form.type == 'free'">
           <el-input type="textarea" v-model="form.content"></el-input>
         </el-form-item>
-        <el-form-item label="考题选项" style="text-align:left;">
+        <el-form-item label="考题选项" v-if="(form.type == 'single') || (form.type == 'multi')" style="text-align:left;">
           <el-row>
             <el-button type="primary" size="mini" round @click="addOption">新增</el-button>
           </el-row>

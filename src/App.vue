@@ -56,6 +56,15 @@
                   <template slot="title">候选人管理</template>
                   <el-menu-item v-if="menuItemDisplay('candidateList')" index="candidateList">候选人列表</el-menu-item>
                 </el-submenu>
+                <el-submenu v-if="menuItemDisplay('examManagement')" index="examManagement">
+                  <template slot="title">考试管理</template>
+                  <el-menu-item v-if="menuItemDisplay('questionList')" index="questionList">考题列表</el-menu-item>
+                  <el-menu-item
+                    v-if="menuItemDisplay('examTemplateList')"
+                    index="examTemplateList"
+                  >试卷模板列表</el-menu-item>
+                  <el-menu-item v-if="menuItemDisplay('examList')" index="examList">试卷列表</el-menu-item>
+                </el-submenu>
               </el-menu>
             </div>
             <div style="display:inline-block;float:right;margin-top:20px;">
@@ -70,9 +79,24 @@
         </el-header>
         <el-container>
           <el-aside style="width:130px;padding-top:10px;background-color:#ddeddd;">
-            <el-button type="primary" size="mini" @click="jump('/customerInfo')" style="width:100px;margin-bottom:5px;margin-left:0px;">新建客户</el-button>
-            <el-button type="primary" size="mini" @click="jump('/candidateInfo')" style="width:100px;margin-bottom:5px;margin-left:0px;">新建候选人</el-button>
-            <el-button type="primary" size="mini" @click="jump('/questionInfo')" style="width:100px;margin-bottom:5px;margin-left:0px;">新建考题</el-button>
+            <el-button
+              type="primary"
+              size="mini"
+              @click="jump('/customerInfo')"
+              style="width:100px;margin-bottom:5px;margin-left:0px;"
+            >新建客户</el-button>
+            <el-button
+              type="primary"
+              size="mini"
+              @click="jump('/candidateInfo')"
+              style="width:100px;margin-bottom:5px;margin-left:0px;"
+            >新建候选人</el-button>
+            <el-button
+              type="primary"
+              size="mini"
+              @click="jump('/questionInfo')"
+              style="width:100px;margin-bottom:5px;margin-left:0px;"
+            >新建考题</el-button>
           </el-aside>
           <el-container>
             <el-main>

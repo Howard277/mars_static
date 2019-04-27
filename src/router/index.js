@@ -9,6 +9,11 @@ import businessSystemInfo from '@/components/businessSystem/businessSystemInfo/b
 import candidateInfo from '@/components/candidate/candidateInfo/candidateInfo.vue'
 import candidateList from '@/components/candidate/candidateList/candidateList.vue'
 import questionInfo from '@/components/exam/questionInfo/questionInfo.vue'
+import questionList from '@/components/exam/questionList/questionList.vue'
+import examInfo from '@/components/exam/examInfo/examInfo.vue'
+import examList from '@/components/exam/examList/examList.vue'
+import examTemplateInfo from '@/components/exam/examTemplateInfo/examTemplateInfo.vue'
+import examTemplateList from '@/components/exam/examTemplateList/examTemplateList.vue'
 
 Vue.use(Router)
 
@@ -50,5 +55,25 @@ export default new Router({
     path: '/questionInfo',
     name: 'questionInfo',
     component: questionInfo
+  }, {
+    path: '/questionList',
+    name: 'questionList',
+    component: questionList
+  }, {
+    path: '/examInfo',
+    name: 'examInfo',
+    component: examInfo
+  }, {
+    path: '/examList',
+    name: 'examList',
+    component: examList
+  }, {
+    path: '/examTemplateInfo',
+    name: 'examTemplateInfo',
+    component: examTemplateInfo
+  }, {
+    path: '/examTemplateList',
+    name: 'examTemplateList',
+    component: examTemplateList
   }]
 })
