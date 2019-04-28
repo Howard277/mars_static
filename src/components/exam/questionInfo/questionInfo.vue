@@ -15,26 +15,26 @@
           <b style="font-size:25px;">{{form.id}}</b>
         </el-form-item>
         <el-form-item label="考题标题">
-          <el-input v-model="form.title"></el-input>
+          <el-input v-model="form.qTitle"></el-input>
         </el-form-item>
         <el-form-item label="考题范围" style="text-align:left;">
-          <el-radio-group v-model="form.scope">
+          <el-radio-group v-model="form.qScope">
             <el-radio v-for="item in question_scope" :key="item" :label="item">{{item}}</el-radio>
           </el-radio-group>
         </el-form-item>
         <el-form-item label="考题类型" style="text-align:left;">
-          <el-radio-group v-model="form.type">
+          <el-radio-group v-model="form.qType">
             <el-radio v-for="(value, key) in question_type" :key="key" :label="key">{{value}}</el-radio>
           </el-radio-group>
         </el-form-item>
-        <el-form-item label="考题内容" v-if="form.type == 'free'">
-          <el-input type="textarea" v-model="form.content"></el-input>
+        <el-form-item label="考题内容" v-if="form.qType == 'free'">
+          <el-input type="textarea" v-model="form.qContent"></el-input>
         </el-form-item>
-        <el-form-item label="考题选项" v-if="(form.type == 'single') || (form.type == 'multi')" style="text-align:left;">
+        <el-form-item label="考题选项" v-if="(form.qType == 'single') || (form.qType == 'multi')" style="text-align:left;">
           <el-row>
             <el-button type="primary" size="mini" round @click="addOption">新增</el-button>
           </el-row>
-          <el-row v-for="item in form.options" :key="item">
+          <el-row v-for="item in form.qOptions" :key="item">
             <el-col :span="1">
               <el-input type="text" v-model="item.no"/>
             </el-col>
@@ -47,7 +47,7 @@
           </el-row>
         </el-form-item>
         <el-form-item label="标准答案">
-          <el-input type="textarea" v-model="form.standard_answer"></el-input>
+          <el-input type="textarea" v-model="form.qStandardAnswer"></el-input>
         </el-form-item>
       </el-form>
     </div>

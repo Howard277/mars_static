@@ -21,7 +21,7 @@
       </div>
       <div v-else>
         <el-table
-          :data="questionList"
+          :data="questionList.data"
           border
           stripe
           highlight-current-row

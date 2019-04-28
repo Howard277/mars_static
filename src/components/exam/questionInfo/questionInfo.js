@@ -6,12 +6,12 @@ export default {
     return {
       form: {
         'id': null, // 考题编号
-        'title': '', // 考题标题
-        'scope': '', // 考题范围
-        'type': '', // 考题类型
-        'content': '', // 考题内容
-        'options': [], // 考题选项
-        'standard_answer': '' // 标准答案
+        'qTitle': '', // 考题标题
+        'qScope': '', // 考题范围
+        'qType': '', // 考题类型
+        'qContent': '', // 考题内容
+        'qOptions': [], // 考题选项
+        'qStandardAnswer': '' // 标准答案
       },
       // 考题范围列表
       question_scope: ['java', 'python', 'javascript', 'linux', 'mysql',
@@ -28,7 +28,7 @@ export default {
   methods: {
     // 添加选项
     addOption () {
-      vue.set(this.form.options, this.form.options.length, {
+      vue.set(this.form.qOptions, this.form.qOptions.length, {
         'no': '',
         'value': ''
       })
@@ -40,9 +40,9 @@ export default {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
-        for (let index in this.form.options) {
-          if (this.form.options[index]['no'] === no) {
-            this.form.options.splice(index, 1)
+        for (let index in this.form.qOptions) {
+          if (this.form.qOptions[index]['no'] === no) {
+            this.form.qOptions.splice(index, 1)
             break
           }
         }
