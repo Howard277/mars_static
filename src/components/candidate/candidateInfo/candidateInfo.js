@@ -1,4 +1,5 @@
 import vue from 'vue'
+import DateTimeUtiles from '@/utils/DateTimeUtiles.js'
 
 export default {
   data () {
@@ -26,7 +27,7 @@ export default {
       let loginInfo = JSON.parse(window.localStorage['loginInfo'])
       let userInfo = loginInfo['userInfo']
       let realName = userInfo['real_name']
-      vue.set(this.form.headhunter_description, this.form.headhunter_description.length, realName + '：' + this.new_description)
+      vue.set(this.form.headhunter_description, this.form.headhunter_description.length, realName + ' ' + DateTimeUtiles.getDateTimeStr(new Date()) + '：' + this.new_description)
     }
   },
   created () {}

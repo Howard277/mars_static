@@ -65,7 +65,7 @@
         </div>
         <div style="text-align:left;vertical-align:bottom;">
           <p style="border-bottom:#909399 solid 2px;font-size:20px;">顾问描述：</p>
-          <div style="padding-left:20px;">
+          <div style="padding-left:20px; word-wrap:break-word;">
             <p v-for="item in form.headhunter_description" :key="item">{{item}}</p>
             <el-row>
               <el-col :span="20">
