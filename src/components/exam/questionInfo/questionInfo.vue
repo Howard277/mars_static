@@ -5,12 +5,11 @@
       <el-breadcrumb-item :to="{ path: '/questionList'}">考题列表</el-breadcrumb-item>
       <el-breadcrumb-item>考题详情</el-breadcrumb-item>
     </el-breadcrumb>
-    <div style="padding:10px;">
+    <div style="padding:10px;text-align:left; word-wrap:break-word;">
+      <el-row>
+        <el-button type="success" size="small" @click="save">保存</el-button>
+      </el-row>
       <el-form ref="form" :label-position="left" :model="form" label-width="80px">
-        <el-row style="text-align:left;">
-          <el-button type="success" size="small" @click="save">保存</el-button>
-        </el-row>
-        <hr>
         <el-form-item style="text-align:left;" label="考题编号">
           <b style="font-size:25px;">{{form.id}}</b>
         </el-form-item>

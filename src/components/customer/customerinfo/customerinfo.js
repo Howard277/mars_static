@@ -1,3 +1,5 @@
+import DateTimeUtil from '@/utils/DateTimeUtil.js'
+
 export default {
   data () {
     return {
@@ -7,7 +9,8 @@ export default {
         birthday: '',
         age: '',
         address: ''
-      }
+      },
+      pickerOptions: DateTimeUtil.datePickerOptions // 日期控件快捷键
     }
   },
   methods: {
