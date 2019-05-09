@@ -182,6 +182,7 @@
           <div
             style="padding:5px;border-bottom:1px solid black;margin-bottom:10px;"
             v-for="item in candidateInfo.workExperience"
+            :key="item.companyChineseName"
           >
             <el-row>
               <el-col :span="2">
@@ -257,7 +258,7 @@
       <div>
         <p style="border-bottom:#409EFF solid 2px;font-size:20px;color:#409EFF;">顾问描述：</p>
         <div style="padding-left:20px;">
-          <div v-for="item in candidateInfo.headhunterDescription">
+          <div v-for="item in candidateInfo.headhunterDescription" :key="item.head">
             <span>{{item.head}}：</span>
             <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <span>{{item.body}}</span>

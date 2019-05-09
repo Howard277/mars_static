@@ -45,6 +45,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     },{
       changeOrigin: true,
       context: ["/es/**"],
+      pathRewrite: { '^/es': ''},   //注意这一行
       target: "http://localhost:9200"
     }],
     quiet: true, // necessary for FriendlyErrorsPlugin

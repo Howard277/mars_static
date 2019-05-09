@@ -1,6 +1,7 @@
 import vue from 'vue'
 import DateTimeUtil from '@/utils/DateTimeUtil.js'
 import MoneyUtil from '@/utils/MoneyUtil.js'
+import es from '@/api/es.js'
 
 export default {
   data () {
@@ -81,7 +82,11 @@ export default {
       vue.set(this.candidateInfo.workExperience, this.candidateInfo.workExperience.length, tempWorkExperience)
     },
     // 保存候选人信息
-    saveCandidate () {}
+    async saveCandidate () {
+      debugger
+      let res = await es.postCandidateInfo(this.candidateInfo)
+      console.info(res)
+    }
   },
   computed: {
     // 计算总薪资
