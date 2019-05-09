@@ -2,7 +2,7 @@
   <div>
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>后续人列表</el-breadcrumb-item>
+      <el-breadcrumb-item>候选人列表</el-breadcrumb-item>
     </el-breadcrumb>
     <el-row style="text-align:left;padding:10px 0px 10px 0px;">
       <el-button type="primary" size="mini" @click="showLikeCard=!showLikeCard">切换显示</el-button>

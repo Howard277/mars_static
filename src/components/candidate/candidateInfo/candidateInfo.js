@@ -1,5 +1,5 @@
 import vue from 'vue'
-import DateTimeUtil from '@/utils/DateTimeUtil.js'
+import {DateTimeUtil, DatePickerOptions} from '@/utils/DateTimeUtil.js'
 import MoneyUtil from '@/utils/MoneyUtil.js'
 import es from '@/api/es.js'
 
@@ -21,6 +21,7 @@ export default {
         detail: '' // 细节
       },
       candidateInfo: {
+        id: '',
         chinese_name: '',
         english_name: '',
         phone_no: '',
@@ -33,7 +34,7 @@ export default {
         workExperience: [], // 工作经验
         headhunterDescription: [] // 描述信息
       },
-      pickerOptions: DateTimeUtil.datePickerOptions // 日期控件快捷键
+      pickerOptions: DatePickerOptions // 日期控件快捷键
     }
   },
   methods: {
