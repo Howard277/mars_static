@@ -5,13 +5,13 @@
       <el-breadcrumb-item :to="{ path: '/candidateList'}">后续人列表</el-breadcrumb-item>
       <el-breadcrumb-item>后续人详情</el-breadcrumb-item>
     </el-breadcrumb>
-    <div style="padding:10px;text-align:left; word-wrap:break-word;">
+    <div style="padding:10px;text-align:left;">
       <el-row>
         <el-button type="success" size="small" @click="saveCandidate">保存</el-button>
       </el-row>
       <el-form ref="candidateInfo" :model="candidateInfo" label-width="100px">
         <div>
-          <p style="border-bottom:#409EFF solid 2px;font-size:20px;color:#409EFF;">基本信息：</p>
+          <p style="border-bottom:#409EFF solid 2px;font-size:20px;color:#409EFF;">基本信息：&nbsp;&nbsp;{{candidateInfo.id}}</p>
           <div style="padding-left:15px;">
             <el-row>
               <el-col :span="6">

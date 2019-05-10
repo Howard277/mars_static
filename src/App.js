@@ -56,7 +56,6 @@ export default {
       }
       // 调用后台登录接口
       let resData = await basic.login(this.loginUser)
-      debugger
       if (resData['status']) {
         // 保存信息
         window.localStorage['loginInfo'] = JSON.stringify(resData)

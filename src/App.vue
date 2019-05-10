@@ -98,7 +98,7 @@
               style="width:100px;margin-bottom:5px;margin-left:0px;"
             >新建考题</el-button>
           </el-aside>
-          <el-container>
+          <el-container style="word-wrap:break-word;">
             <el-main>
               <router-view></router-view>
             </el-main>

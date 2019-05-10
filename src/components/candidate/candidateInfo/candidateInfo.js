@@ -1,5 +1,8 @@
 import vue from 'vue'
-import {DateTimeUtil, DatePickerOptions} from '@/utils/DateTimeUtil.js'
+import {
+  DateTimeUtil,
+  DatePickerOptions
+} from '@/utils/DateTimeUtil.js'
 import MoneyUtil from '@/utils/MoneyUtil.js'
 import es from '@/api/es.js'
 
@@ -84,9 +87,27 @@ export default {
     },
     // 保存候选人信息
     async saveCandidate () {
-      debugger
-      let res = await es.postCandidateInfo(this.candidateInfo)
-      console.info(res)
+      if (typeof (this.candidateInfo.id) !== 'undefined' && this.candidateInfo.id.length > 0) {
+        // 已经存在id编号，就进行更新
+        let temp = {}
+        Object.assign(temp, this.candidateInfo)
+        delete temp.id
+        let res = await es.putCandidateInfo(this.candidateInfo.id, temp)
+        if (res.result === 'updated') {
+          this.$message({type: 'success', message: '更新成功！'})
+        } else {
+          this.$message.error('更新失败！')
+        }
+      } else {
+        // 不存在id编号的就进行创建
+        let res = await es.postCandidateInfo(this.candidateInfo)
+        if (res.result === 'created') {
+          this.candidateInfo.id = res._id
+          this.$message({type: 'success', message: '创建成功！'})
+        } else {
+          this.$message.error('创建失败！')
+        }
+      }
     }
   },
   computed: {
@@ -100,5 +121,13 @@ export default {
       return (this.candidateInfo.total_package / 10000) + '万'
     }
   },
-  created () {}
+  async created () {
+    let id = this.$route.params.id
+    if (typeof (id) !== 'undefined') {
+      let res = await es.getCandidateInfoById(id)
+      debugger
+      Object.assign(this.candidateInfo, res._source)
+      this.candidateInfo.id = res._id
+    }
+  }
 }
