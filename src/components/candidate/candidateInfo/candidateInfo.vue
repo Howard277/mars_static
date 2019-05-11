@@ -258,11 +258,11 @@
       <div>
         <p style="border-bottom:#409EFF solid 2px;font-size:20px;color:#409EFF;">顾问描述：</p>
         <div style="padding-left:20px;">
-          <div v-for="item in candidateInfo.headhunterDescription" :key="item.head">
-            <span>{{item.head}}：</span>
-            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <span>{{item.body}}</span>
-          </div>
+          <el-row v-for="item in candidateInfo.headhunterDescription" :key="item.head">
+            <el-col :span='2'>{{item.head}}：</el-col>
+            <el-col :span='18'>{{item.body}}</el-col>
+            <el-col :span='4'>{{item.time}}</el-col>
+          </el-row>
           <el-row>
             <el-col :span="2">
               <el-button type="primary" size="mini" @click="submitNewDescription">暂存</el-button>

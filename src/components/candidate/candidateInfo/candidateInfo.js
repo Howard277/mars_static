@@ -52,8 +52,9 @@ export default {
       let realName = userInfo['real_name']
       // 组装描述对象
       let obj = {
-        'head': realName + ' ' + DateTimeUtil.getDateTimeStr(new Date()),
-        'body': this.new_description
+        'head': realName + ' ',
+        'body': this.new_description,
+        'time': DateTimeUtil.getDateTimeStr(new Date())
       }
       vue.set(this.candidateInfo.headhunterDescription, this.candidateInfo.headhunterDescription.length, obj)
     },
